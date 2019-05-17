@@ -10,7 +10,7 @@ def main():
 
 
 # Finds the average price of houses in London according to the supported websites
-def get_average_price():
+def get_average_price() -> float:
     page = get_page("https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E87490&sortType=6&propertyTypes=detached%2Csemi-detached%2Cterraced&primaryDisplayPropertyType=houses&includeSSTC=false")
     prices = get_prices(page, "rightmove")
     page = get_page("https://www.zoopla.co.uk/for-sale/houses/london/?page_size=100&q=London&radius=0&results_sort=newest_listings&search_source=refine")
@@ -20,7 +20,7 @@ def get_average_price():
 
 
 # Returns a list of all the prices found at the given site
-def get_prices(html, site_name):
+def get_prices(html, site_name) -> list:
     prices = list()
 
     # Select the correct tags and attributes to find the prices for a given site
