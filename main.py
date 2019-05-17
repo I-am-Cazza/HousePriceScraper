@@ -22,12 +22,16 @@ def get_average_price():
 # Returns a list of all the prices found at the given site
 def get_prices(html, site_name):
     prices = list()
+
+    # Select the correct tags and attributes to find the prices for a given site
     if site_name == "rightmove":
         tag_type = "div"
         class_name = "propertyCard-priceValue"
     else:
         tag_type = "a"
         class_name = "listing-results-price"
+
+    # Find every price on the page and add them all to a list as floats
     for tag in html.find_all(tag_type):
         if "class" in tag.attrs and class_name in tag["class"]:
             price = convert_price(str(tag.string))
